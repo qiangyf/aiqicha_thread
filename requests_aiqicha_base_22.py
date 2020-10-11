@@ -38,6 +38,7 @@ def get_proxy():
     return proxies
 
 def requests_proxy(url):
+    #加上代理后，重写了request,加入循环，加上try,防止因为代理问题，程序终止
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36',
     }
@@ -218,8 +219,7 @@ class MyThread(Thread):
         self.func(*self.args)
 
 def spider(a,b):
-    
-    
+        
     for company in company_datas[a:b]:
         try:
             pid = get_pid(company)
@@ -230,6 +230,7 @@ def spider(a,b):
             
 def main():
     # 创建 Thread 实例
+    #主函数里手动开了22个线程，后续还需要改进，改进成自动分配的，暂时不需要加锁。
     t1 = MyThread(spider, (0, 10000))
     t2 = MyThread(spider, (10000, 20000))
     t3 = MyThread(spider, (20000, 30000))
