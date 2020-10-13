@@ -8,10 +8,10 @@ from threading import Thread
 
 
 def get_proxy():
-    host1 = "http-dynamic.xiaoxiangdaili.com"
-    port1 = "10030"
-    user1 = '575876117614186496'
-    password1 = 'W7ZcVA7T'
+    host1 = ""
+    port1 = ""
+    user1 = ''
+    password1 = ''
     proxy_meta1 = "http://%(user)s:%(password)s@%(host)s:%(port)s" % {
         "host": host1,
         "port": port1,
@@ -19,10 +19,10 @@ def get_proxy():
         "password": password1,
     }
     
-    host2 = "tps123.kdlapi.com"
-    port2 = "15818"
-    user2 = 't18890465330712'
-    password2 = 't94bsds3'
+    host2 = ""
+    port2 = ""
+    user2 = ''
+    password2 = ''
 
     proxy_meta2 = "http://%(user)s:%(password)s@%(host)s:%(port)s" % {
                 "host": host2,
@@ -176,7 +176,7 @@ def connect_mysql():
 
 def get_all_company_names():
 	db = pymysql.connect("localhost", "rhino", 'rhino', "OceanSpider_Base")
-	# db = pymysql.connect("218.94.82.249", "rhino", 'rhino', "OceanSpider_Base", 8015)
+	
 	cursor = db.cursor()
 	cursor.execute("SELECT * FROM tb_mingluji WHERE city='南京'")
 	data = cursor.fetchall()
@@ -190,7 +190,7 @@ def get_all_company_names():
 
 def get_crawl_company_names():
 	db = pymysql.connect("localhost", "rhino", 'rhino', "OceanSpider_Base")
-	# db = pymysql.connect("218.94.82.249", "rhino", 'rhino', "OceanSpider_Base", 8015)
+	
 	cursor = db.cursor()
 	cursor.execute("SELECT company_name FROM tb_aiqicha_base_mingluji")
 	data = cursor.fetchall()
